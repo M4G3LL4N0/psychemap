@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  --bg-void: #000000;
+  --bg-midnight: #0a0e1a;
+  --bg-graphite: #12151f;
+  --bg-panel: rgba(18, 21, 31, 0.72);
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --border-glow: rgba(59, 130, 246, 0.25);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --accent-gold: #c9a227;
+  --accent-silver: #cbd5e1;
+}
+
+@theme inline {
+  --color-void: var(--bg-void);
+  --color-midnight: var(--bg-midnight);
+  --color-graphite: var(--bg-graphite);
+  --color-panel: var(--bg-panel);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-gold: var(--accent-gold);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+.page-mesh {
+  background-color: var(--bg-void);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.12), transparent),
+    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 48px 48px, 48px 48px;
+}
+
+.glass-panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-xl border border-white/10 px-6 py-3 font-medium text-slate-300 transition-colors hover:border-white/20 hover:text-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400;
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+@keyframes hero-layer-in {
+  from {
+    opacity: 0.25;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-layer {
+  opacity: 0.25;
+  animation: hero-layer-in 0.7s ease forwards;
+}
+
+.hero-layer:nth-child(1) { animation-delay: 0.05s; }
+.hero-layer:nth-child(2) { animation-delay: 0.15s; }
+.hero-layer:nth-child(3) { animation-delay: 0.25s; }
+.hero-layer:nth-child(4) { animation-delay: 0.35s; }
+.hero-layer:nth-child(5) { animation-delay: 0.45s; }
+.hero-layer:nth-child(6) { animation-delay: 0.55s; }
+.hero-layer:nth-child(7) { animation-delay: 0.65s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-layer,
+  .animate-fade-up,
+  .animate-pulse-soft {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
