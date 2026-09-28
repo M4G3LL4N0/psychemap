@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { MarketingGraphicsStack } from "@/components/MarketingGraphicsStack";
 import { HeroVisual } from "@/components/HeroVisual";
 import { CTASection } from "@/components/CTASection";
 import { AtlasTopicCard } from "@/components/AtlasTopicCard";
@@ -206,5 +205,3 @@ export default function HomePage() {
     </>
   );
 }
-
-<MarketingGraphicsStack />
